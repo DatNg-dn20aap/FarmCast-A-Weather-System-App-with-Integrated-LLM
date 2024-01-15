@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#app {
+    margin-top: 50px;
+}
+
+input, button {
+    margin-top: 20px;
+}
+
+.forecast-entry {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.forecast-entry h3 {
+    margin: 0;
+    color: #333;
+}
+
+.forecast-entry p {
+    margin: 5px 0;
+}

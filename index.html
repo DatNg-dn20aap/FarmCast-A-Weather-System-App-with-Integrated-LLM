@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <!-- Link to CSS file if you have one -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Weather Forecast</h1>
+        <div>
+            <input type="text" id="latitude" placeholder="Enter latitude">
+            <input type="text" id="longitude" placeholder="Enter longitude">
+            <button onclick="fetchWeatherForecast()">Get Forecast</button>
+        </div>
+        <div id="forecast" class="forecast-container">
+            <!-- Weather forecast data will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
