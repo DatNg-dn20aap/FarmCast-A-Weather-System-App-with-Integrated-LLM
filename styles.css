@@ -26,3 +26,22 @@ input, button {
 .forecast-entry p {
     margin: 5px 0;
 }
+
+.location-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e8ef7;
+    color: white;
+    cursor: pointer;
+}
+
+/* Larger touch targets on smaller screens */
+@media (max-width: 600px) {
+    .location-button {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+}

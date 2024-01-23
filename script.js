@@ -1,3 +1,50 @@
+function getLocationAndWeather() {
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(processPosition, handleLocationError);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function processPosition(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    fetchWeatherData(latitude, longitude);
+}
+
+function handleLocationError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation. Please enable it to use this feature.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
+function fetchWeatherData(lat, lon) {
+    // Use the latitude and longitude in your weather API request
+    var apiKey = '6d2237fc44ab54203268a362a86ac45d'; // Replace with your actual API key
+    var apiUrl = `https://api.agromonitoring.com/agro/1.0/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log("API response:", data); // Log the API response
+            displayCurrentWeather(data);
+        })
+        .catch(error => {
+            console.error('Error fetching current weather data:', error);
+        });
+}
+
 function fetchCurrentWeather() {
     var lat = document.getElementById('latitude').value;
     var lon = document.getElementById('longitude').value;

@@ -11,6 +11,9 @@
     <div id="app">
         <h1>Current Weather</h1>
         <div>
+            <button class="location-button" onclick="getLocationAndWeather()">Use Current Location</button>
+        </div>
+        <div>
             <input type="text" id="latitude" placeholder="Enter latitude">
             <input type="text" id="longitude" placeholder="Enter longitude">
             <button onclick="fetchCurrentWeather()">Get Weather</button>
