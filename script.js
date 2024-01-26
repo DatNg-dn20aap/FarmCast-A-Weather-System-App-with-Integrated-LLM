@@ -31,7 +31,7 @@ function handleLocationError(error) {
 
 function fetchWeatherData(lat, lon) {
     // Use the latitude and longitude in your weather API request
-    var apiKey = '6d2237fc44ab54203268a362a86ac45d'; // Replace with your actual API key
+    var apiKey = 'APIKEY'; // Replace with your actual API key
     var apiUrl = `https://api.agromonitoring.com/agro/1.0/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     fetch(apiUrl)
@@ -48,7 +48,7 @@ function fetchWeatherData(lat, lon) {
 function fetchCurrentWeather() {
     var lat = document.getElementById('latitude').value;
     var lon = document.getElementById('longitude').value;
-    var apiKey = '6d2237fc44ab54203268a362a86ac45d'; // Replace with your actual API key
+    var apiKey = 'APIKEY'; // Replace with your actual API key
     var apiUrl = `https://api.agromonitoring.com/agro/1.0/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     console.log("Requesting current weather for lat:", lat, "lon:", lon); // Log the coordinates
