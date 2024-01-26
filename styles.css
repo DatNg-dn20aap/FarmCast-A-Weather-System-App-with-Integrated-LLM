@@ -1,14 +1,54 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #333; /* Gray-black background */
+    color: white; /* Adjust text color for better visibility */
 }
 
 #app {
     margin-top: 50px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-around; /* Distributes space evenly around items */
+    align-items: center; /* Align items vertically */
+}
+
+.weather-button, .location-button {
+    padding: 10px 30px; /* Equal padding for both buttons */
+    font-size: 16px;
+    margin-top: 20px; /* Space between input fields and buttons */
+    border: none;
+    border-radius: 5px;
+    background-color: #4e8ef7;
+    color: white;
+    cursor: pointer;
+    outline: none; /* Removes the outline to maintain style consistency */
+    box-shadow: none; /* Optional: Removes any box-shadow if present */
+    width: 150px; /* Sets a fixed width for all buttons */
+    text-align: center; /* Ensures text is centered within the button */
+}
+
 input, button {
     margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e8ef7; /* Consistent button color */
+    color: white;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    background-color: #555; /* Slightly lighter gray for input */
+    color: white; /* White text for inputs */
+    border: 1px solid #777; /* Subtle border for inputs */
+}
+
+button:hover {
+    background-color: #3b77d6; /* Slightly darker shade on hover for buttons */
 }
 
 .forecast-entry {
@@ -16,31 +56,29 @@ input, button {
     padding: 10px;
     margin: 10px 0;
     text-align: left;
+    background-color: #444; /* Slightly lighter gray for entry */
+    color: white;
 }
 
 .forecast-entry h3 {
     margin: 0;
-    color: #333;
+    color: #fff;
 }
 
 .forecast-entry p {
     margin: 5px 0;
 }
 
-.location-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4e8ef7;
-    color: white;
-    cursor: pointer;
+@media (max-width: 600px) {
+    .location-button, .weather-button {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
 }
 
 /* Larger touch targets on smaller screens */
 @media (max-width: 600px) {
-    .location-button {
+    button, input[type="text"] {
         padding: 15px 30px;
         font-size: 18px;
     }
