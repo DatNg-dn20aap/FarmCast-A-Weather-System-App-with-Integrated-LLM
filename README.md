@@ -1,4 +1,4 @@
-Weather App for Agruculture Porpose with Intergrated LLM 
+Weather App for Agruculture Porpose with Intergrated LLM (FarmCast)
 
 -- This is a Project For University End of Year--
 
