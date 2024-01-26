@@ -9,7 +9,7 @@ function getLocationAndWeather() {
 function processPosition(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
-    fetchWeatherData(latitude, longitude);
+    fetchWeatherData(latitude, longitude); // This will also fetch the forecast
 }
 
 function handleLocationError(error) {
@@ -30,38 +30,28 @@ function handleLocationError(error) {
 }
 
 function fetchWeatherData(lat, lon) {
-    // Use the latitude and longitude in your weather API request
     var apiKey = 'APIKEY'; // Replace with your actual API key
-    var apiUrl = `https://api.agromonitoring.com/agro/1.0/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    var weatherApiUrl = `https://api.agromonitoring.com/agro/1.0/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
-    fetch(apiUrl)
+    // Fetch current weather
+    fetch(weatherApiUrl)
         .then(response => response.json())
         .then(data => {
-            console.log("API response:", data); // Log the API response
+            console.log("Current weather API response:", data);
             displayCurrentWeather(data);
+            // Fetch forecast after current weather
+            fetchWeatherForecast(lat, lon); // Now calls the forecast function
         })
         .catch(error => {
             console.error('Error fetching current weather data:', error);
+            displayError('Error fetching current weather data.');
         });
 }
 
 function fetchCurrentWeather() {
     var lat = document.getElementById('latitude').value;
     var lon = document.getElementById('longitude').value;
-    var apiKey = 'APIKEY'; // Replace with your actual API key
-    var apiUrl = `https://api.agromonitoring.com/agro/1.0/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-
-    console.log("Requesting current weather for lat:", lat, "lon:", lon); // Log the coordinates
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            console.log("API response:", data); // Log the API response
-            displayCurrentWeather(data);
-        })
-        .catch(error => {
-            console.error('Error fetching current weather data:', error);
-        });
+    fetchWeatherData(lat, lon); // This will also fetch the forecast
 }
 
 function displayCurrentWeather(data) {
@@ -74,18 +64,86 @@ function displayCurrentWeather(data) {
         var iconUrl = `http://openweathermap.org/img/wn/${weather.icon}.png`;
 
         weatherDiv.innerHTML = `
-            <h3>Current Weather</h3>
-            <p><strong>Condition:</strong> ${weather.main} (${weather.description})</p>
-            <img src="${iconUrl}" alt="${weather.description}">
-            <p><strong>Temperature:</strong> ${main.temp} K (Feels like: ${main.feels_like} K)</p>
-            <p><strong>Min Temp:</strong> ${main.temp_min} K, <strong>Max Temp:</strong> ${main.temp_max} K</p>
-            <p><strong>Pressure:</strong> ${main.pressure} hPa</p>
-            <p><strong>Humidity:</strong> ${main.humidity}%</p>
-            <p><strong>Wind Speed:</strong> ${wind.speed} m/s, <strong>Direction:</strong> ${wind.deg}°, <strong>Gust:</strong> ${wind.gust} m/s</p>
-            <p><strong>Cloudiness:</strong> ${clouds.all}%</p>
+            <div class="current-weather-entry">
+                <h2>Current Weather</h2>
+                <img src="${iconUrl}" alt="${weather.description}" style="width:50px;height:50px;">
+                <p><strong>${weather.main} - ${weather.description}</strong></p>
+                <p>Temperature: ${main.temp} K (Feels like: ${main.feels_like} K)</p>
+                <p>Pressure: ${main.pressure} hPa</p>
+                <p>Humidity: ${main.humidity}%</p>
+                <p>Wind Speed: ${wind.speed} m/s</p>
+                <p>Cloudiness: ${clouds.all}%</p>
+            </div>
         `;
     } else {
         weatherDiv.innerHTML = `<p>Current weather data not available.</p>`;
+    }
+}
+
+function fetchWeatherForecast(lat, lon) {
+    var apiKey = 'APIKEY'; // Replace with your actual API key
+    var forecastApiUrl = `https://api.agromonitoring.com/agro/1.0/weather/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    fetch(forecastApiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Forecast API response:", data);
+            displayWeatherForecast(data);
+        })
+        .catch(error => {
+            console.error('Error fetching weather forecast data:', error);
+            displayError('Error fetching weather forecast data.');
+        });
+}
+
+function displayWeatherForecast(data) {
+    var forecastDiv = document.getElementById('forecast');
+
+    if (data && data.length > 0) {
+        // Process data to get two forecasts per day
+        let forecastsByDay = {};
+        data.forEach(forecast => {
+            let day = (new Date(forecast.dt * 1000)).toLocaleDateString();
+            if (!forecastsByDay[day]) {
+                forecastsByDay[day] = [];
+            }
+            if (forecastsByDay[day].length < 2) {  // Limit to 2 forecasts per day
+                forecastsByDay[day].push(forecast);
+            }
+        });
+
+        // Generate HTML for each day
+        var forecastsHTML = Object.entries(forecastsByDay).map(([day, forecasts]) => {
+            return `
+                <div class="forecast-day">
+                    <h4>${day}</h4>
+                    ${forecasts.map(f => {
+                        let time = (new Date(f.dt * 1000)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        let iconUrl = `http://openweathermap.org/img/wn/${f.weather[0].icon}.png`;
+                        let weather = f.weather[0];
+                        let main = f.main;
+                        let wind = f.wind;
+                        let clouds = f.clouds.all;
+                        return `
+                            <div class="forecast-entry">
+                                <p><strong>${time}</strong></p>
+                                <img src="${iconUrl}" alt="${weather.description}" style="width:30px;height:30px;">
+                                <p><strong>${weather.main} - ${weather.description}</strong></p>
+                                <p>Temp: ${main.temp} K (Feels like: ${main.feels_like} K)</p>
+                                <p>Pressure: ${main.pressure} hPa</p>
+                                <p>Humidity: ${main.humidity}%</p>
+                                <p>Wind: ${wind.speed} m/s, ${wind.deg}°</p>
+                                <p>Cloudiness: ${clouds}%</p>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }).join('');
+
+        forecastDiv.innerHTML = `<h2>Weather Forecast</h2>${forecastsHTML}`;
+    } else {
+        forecastDiv.innerHTML = `<p>Weather forecast data not available.</p>`;
     }
 }
 
