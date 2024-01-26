@@ -9,6 +9,27 @@ body {
     margin-top: 50px;
 }
 
+.button-group {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: stretch; /* Stretch button width to match the container */
+    gap: 10px; /* Space between buttons */
+}
+
+.button-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e8ef7;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    box-sizing: border-box; /* Include padding and border in width and height */
+}
+
 .button-container {
     display: flex;
     justify-content: space-around; /* Distributes space evenly around items */
