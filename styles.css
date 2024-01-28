@@ -170,6 +170,12 @@ button:hover {
     margin: 5px 0;
 }
 
+#chat-container {
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+    padding: 20px;
+}
+
 /* Media query for smaller screens */
 @media (max-width: 600px) {
     .forecast-entry {
