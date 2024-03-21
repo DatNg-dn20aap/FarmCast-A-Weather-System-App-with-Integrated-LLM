@@ -1,10 +1,3 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #333; /* Gray-black background */
-    color: white; /* Adjust text color for better visibility */
-}
-
 #app {
     margin-top: 50px;
 }
@@ -196,4 +189,36 @@ button:hover {
         padding: 15px 30px;
         font-size: 18px;
     }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: url('./backgrounds/BackgroundStartingPage.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/*.button-continue {
+    padding: 16px 32px;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    background: url('./buttons/ContinueButton.png') no-repeat center;
+    background-size: contain;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+}*/
+.button-continue {
+    padding: 16px 32px;
+    font-size: 20px;
+    border: 1px solid #ffffff; /* White border */
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white; /* White text */
+    cursor: pointer;
+    outline: none;
+    text-align: center;
 }
