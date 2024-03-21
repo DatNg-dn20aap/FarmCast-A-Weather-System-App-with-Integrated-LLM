@@ -1,0 +1,32 @@
+#menu-container {
+    text-align: center;
+}
+
+.menu-button {
+    display: block;
+    margin: 10px auto;
+    width: 80%; /* or any specific width */
+    height: 100px; /* adjust as needed */
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* color of your text */
+    line-height: 100px; /* to vertically center your text */
+    text-decoration: none; /* remove underline from links */
+    font-size: 24px; /* size of your text */
+    position: relative; /* for positioning the text */
+}
+
+#weather-forecast {
+    background-image: url('./buttons/WeatherForecastButton.png');
+    /* Rest of the styles */
+}
+
+#weather-history {
+    background-image: url('./buttons/WeatherHistoryButton.png');
+    /* Rest of the styles */
+}
+
+#assistant-guide {
+    background-image: url('./buttons/AssistantGuideButton.png');
+    /* Rest of the styles */
+}

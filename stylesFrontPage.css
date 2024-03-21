@@ -1,0 +1,73 @@
+html, body {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Spread out the content */
+    height: 100vh; /* Full height of the viewport */
+    padding: 20px; /* Add some padding */
+    color: #263C50; /* Text color */
+}
+
+.content-container {
+    flex-grow: 1; /* Allows this container to grow and push the footer to the bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Aligns content to the bottom */
+    padding-bottom: 200px; /* Space from the bottom */
+}
+
+
+.button-continue {
+    padding: 16px 32px;
+    font-style: bold;
+    font-size: 24px;
+    border: none; /* White border */
+    border-radius: 25px;
+    background-color: #567788; /* Semi-transparent black background */
+    color: white; /* White text */
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    box-shadow: none; /* Removes any box-shadow if present */
+    width: auto; /* Adjust width as required */
+    display: inline-block; /* Center button if container is text-aligned center */
+    margin-top: 30px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: url('./backgrounds/BackgroundStartingPage.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+#app h1 {
+    text-shadow: 
+        -0.5px -0.5px 0 white,  
+         0.5px -0.5px 0 white,
+        -0.5px  0.5px 0 white,
+         0.5px  0.5px 0 white;
+    font-style: bold;
+    font-size: 36px;
+    margin-bottom: 0;
+    text-align: left; /* Aligns text to the left */
+    padding-left: 20px; /* Adds padding to the left; adjust the value as needed */
+}
+#app p {
+    text-shadow: 
+        -0.5px -0.5px 0 white,  
+         0.5px -0.5px 0 white,
+        -0.5px  0.5px 0 white,
+         0.5px  0.5px 0 white;
+    font-size: 26px;
+    margin-top: 0; /* Reduces space above the paragraph */
+    text-align: left; /* Aligns text to the left */
+    padding-left: 20px; /* Adds padding to the left; adjust the value as needed */
+}
+
+

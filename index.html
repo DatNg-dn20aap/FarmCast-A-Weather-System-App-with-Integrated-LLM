@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FarmCast - Weather and Agriculture Assistance</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesFrontPage.css">
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <div id="app">
-        <h1>FarmCast</h1>
-        <p>Make Farming Easier</p>
-        <button id="continue-button" class="button-continue" onclick="location.href='menu-page.html'">Continue</button>
+        <!-- Add a container around the text and button for better control over positioning -->
+        <div class="content-container">
+            <h1>FarmCast</h1>
+            <p>Make Farming Easier</p>
+            <button id="continue-button" class="button-continue" onclick="location.href='menu-page.html'">Continue</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
