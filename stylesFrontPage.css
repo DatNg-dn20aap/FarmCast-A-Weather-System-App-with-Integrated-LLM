@@ -70,4 +70,25 @@ body {
     padding-left: 20px; /* Adds padding to the left; adjust the value as needed */
 }
 
+/* Media query for extra small devices (phones) */
+@media only screen and (max-width: 350px) {
+    .content-container {
+        padding-bottom: 60px; /* Space from the bottom */
+    }
+}
+
+/* Media query for small devices (portrait tablets and large phones) */
+@media only screen and (min-width: 351px) and (max-width: 900px) {
+    
+}
+
+/* Media query for medium devices (landscape tablets) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    
+}
+
+/* Media query for large devices (desktops) */
+@media only screen and (min-width: 1201px) {
+    
+}
 
