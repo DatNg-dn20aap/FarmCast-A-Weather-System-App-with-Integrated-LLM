@@ -5,15 +5,27 @@
 .menu-button {
     display: block;
     margin: 10px auto;
-    width: 80%; /* or any specific width */
-    height: 100px; /* adjust as needed */
-    background-size: cover;
-    background-position: center;
-    color: #fff; /* color of your text */
-    line-height: 100px; /* to vertically center your text */
-    text-decoration: none; /* remove underline from links */
-    font-size: 24px; /* size of your text */
-    position: relative; /* for positioning the text */
+    width: 80%; /* Adjust width as necessary */
+    height: 150px; /* Adjust height as necessary */
+    background-position: center; /* Center the image within the button */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area of the button */
+    color: #fff; /* Color of the text */
+    line-height: 150px; /* Adjust based on your button's height for vertical centering */
+    text-decoration: none; /* Remove underline from text */
+    font-size: 24px; /* Adjust font size as necessary */
+    border: none; /* Assuming you don't want any border */
+    cursor: pointer; /* Change mouse icon to indicate it's clickable */
+}
+
+@media (max-width: 600px) { /* Adjust breakpoint as necessary */
+    .menu-button {
+        width: 95%; /* Increase width on smaller screens */
+        height: auto; /* Adjust height to maintain aspect ratio */
+        line-height: normal; /* Adjust line height for text */
+        padding: 20px 0; /* Add padding to increase button height */
+        font-size: 20px; /* Optionally adjust font size */
+    }
 }
 
 #weather-forecast {
