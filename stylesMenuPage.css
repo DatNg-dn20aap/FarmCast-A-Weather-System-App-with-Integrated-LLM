@@ -1,3 +1,38 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Base styles */
+.title-container {
+    position: relative;
+    text-align: left;
+    width: 100vw; /* Full width */
+    height: 200px; 
+    padding-top: 20%; /* This padding-top percentage controls the height relative to the width */
+    margin-bottom: -20px;
+    background-position: top center;
+    background: url('./backgrounds/backgroundShape.png') no-repeat center center;
+    background-size: cover;
+    z-index: 1;
+    overflow: hidden; /* This will ensure no part of the background overflows */
+}
+
+h2 {
+    position: absolute;
+    padding-left: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the title is above the background shape */
+    width: 100%; /* Ensures the text can be centered in the title container */
+    margin: 0; /* Resets any default margin */
+    color: white; /* Text color */
+    font-size: 3rem; /* Adjust the size as needed */
+    font-weight: bold; /* Make the text bold */
+}
+
 #menu-container {
     text-align: center;
 }
@@ -21,19 +56,19 @@
     overflow: hidden; /* Ensure no overflow if using border-radius */
     text-decoration: none; /* Remove underline from links if using 'a' tags */
     text-shadow: 
-        -0.5px -0.5px 0 #567788,  
-         0.5px -0.5px 0 #567788,
-        -0.5px  0.5px 0 #567788,
-         0.5px  0.5px 0 #567788;
+        -0.6px -0.6px 0 #567788,  
+         0.6px -0.6px 0 #567788,
+        -0.6px  0.6px 0 #567788,
+         0.6px  0.6px 0 #567788;
 }
 
 /* Media query for extra small devices (phones) */
 @media only screen and (max-width: 350px) {
     .menu-button {
         width: 95%; /* Increase width on very small screens */
-        height: 80px; /* Adjust height as needed */
-        font-size: 4vw; /* Adjust font size as needed */
-        line-height: 80px; /* Adjust line height to match height for vertical centering */
+        height: 100px; /* Adjust height as needed */
+        font-size: 5vw; /* Adjust font size as needed */
+        line-height: 150px; /* Adjust line height to match height for vertical centering */
     }
 }
 
@@ -42,8 +77,11 @@
     .menu-button {
         width: 90%; /* Slightly decrease width on small tablets */
         height: 120px; /* Adjust height as needed */
-        font-size: 3.5vw; /* Adjust font size as needed */
-        line-height: 120px; /* Adjust line height to match height for vertical centering */
+        font-size: 4vw; /* Adjust font size as needed */
+        line-height: 170px; /* Adjust line height to match height for vertical centering */
+    }
+    .title-container {
+        height: 250px; /* Slightly larger height for larger devices */
     }
 }
 
@@ -53,7 +91,10 @@
         width: 80%; /* Adjust the width as needed */
         height: 120px; /* Maintain a larger fixed height */
         font-size: 3vw; /* Adjust font size as needed */
-        line-height: 120px; /* Match line height with height for vertical centering */
+        line-height: 170px; /* Match line height with height for vertical centering */
+    }
+    .title-container {
+        height: 350px; /* Larger height for desktop screens */
     }
 }
 
@@ -63,7 +104,10 @@
         width: 70%; /* Decrease width for larger screens to avoid too wide buttons */
         height: 150px; /* Increase height for larger display area */
         font-size: 3vw; /* Adjust font size as needed */
-        line-height: 150px; /* Match line height with height for vertical centering */
+        line-height: 200px; /* Match line height with height for vertical centering */
+    }
+    .title-container {
+        height: 400px; /* Even larger height for big screens */
     }
 }
 
