@@ -1,16 +1,21 @@
-const cacheName = 'weather-app-v1';
+const cacheName = 'weather-app-v1.5';
 const staticAssets = [
   './',
-  './styles.css',
-  './script.js',
+  './offlineLog.js',
   './manifest.json',
   './icons/',
   './backgrounds/',
   './buttons/',
   './images/',
+  './script.js',
+  './styleFrontPage.css',
+  './styleMenuPage.css',
+  './styles.css',
   './index.html',
-  './current-weather.html',
-  './ai-agriculture-chat.html'
+  './forecast-weather.html',
+  './ai-agriculture-chat.html',
+  './history-weather.html',
+  './menu.html',
 ];
 
 self.addEventListener('install', event => {

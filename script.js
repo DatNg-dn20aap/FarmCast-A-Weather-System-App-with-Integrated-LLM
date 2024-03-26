@@ -63,12 +63,16 @@ function displayCurrentWeather(data) {
         var clouds = data.clouds;
         var iconUrl = `http://openweathermap.org/img/wn/${weather.icon}.png`;
 
+        // Convert temperatures from Kelvin to Celsius
+        var tempCelsius = (main.temp - 273.15).toFixed(1); // Round to one decimal place
+        var feelsLikeCelsius = (main.feels_like - 273.15).toFixed(1); // Round to one decimal place
+
         weatherDiv.innerHTML = `
             <div class="current-weather-entry">
                 <h2>Current Weather</h2>
                 <img src="${iconUrl}" alt="${weather.description}" style="width:50px;height:50px;">
                 <p><strong>${weather.main} - ${weather.description}</strong></p>
-                <p>Temperature: ${main.temp} K (Feels like: ${main.feels_like} K)</p>
+                <p>Temperature: ${tempCelsius} °C (Feels like: ${feelsLikeCelsius} °C)</p>
                 <p>Pressure: ${main.pressure} hPa</p>
                 <p>Humidity: ${main.humidity}%</p>
                 <p>Wind Speed: ${wind.speed} m/s</p>
@@ -124,12 +128,15 @@ function displayWeatherForecast(data) {
                         let main = f.main;
                         let wind = f.wind;
                         let clouds = f.clouds.all;
+                        // Convert temperatures from Kelvin to Celsius
+                        var tempCelsius = (main.temp - 273.15).toFixed(1); // Round to one decimal place
+                        var feelsLikeCelsius = (main.feels_like - 273.15).toFixed(1); // Round to one decimal place
                         return `
                             <div class="forecast-entry">
                                 <p><strong>${time}</strong></p>
                                 <img src="${iconUrl}" alt="${weather.description}" style="width:30px;height:30px;">
                                 <p><strong>${weather.main} - ${weather.description}</strong></p>
-                                <p>Temp: ${main.temp} K (Feels like: ${main.feels_like} K)</p>
+                                <p>Temp: ${tempCelsius} °C (Feels like: ${feelsLikeCelsius} °C)</p>
                                 <p>Pressure: ${main.pressure} hPa</p>
                                 <p>Humidity: ${main.humidity}%</p>
                                 <p>Wind: ${wind.speed} m/s, ${wind.deg}°</p>
@@ -151,4 +158,3 @@ function displayError(message) {
     var forecastDiv = document.getElementById('forecast');
     forecastDiv.innerHTML = `<p>${message}</p>`;
 }
-

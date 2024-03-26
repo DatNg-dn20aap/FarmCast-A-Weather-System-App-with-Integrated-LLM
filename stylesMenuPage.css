@@ -2,29 +2,68 @@
     text-align: center;
 }
 
+/* Base styles */
 .menu-button {
     display: block;
-    margin: 10px auto;
-    width: 80%; /* Adjust width as necessary */
-    height: 150px; /* Adjust height as necessary */
-    background-position: center; /* Center the image within the button */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Cover the entire area of the button */
-    color: #fff; /* Color of the text */
-    line-height: 150px; /* Adjust based on your button's height for vertical centering */
-    text-decoration: none; /* Remove underline from text */
-    font-size: 24px; /* Adjust font size as necessary */
-    border: none; /* Assuming you don't want any border */
-    cursor: pointer; /* Change mouse icon to indicate it's clickable */
+    width: 90%; /* Adjust width for mobile */
+    margin: 10px auto; /* Center the buttons with automatic horizontal margins */
+    height: 100px; /* Fixed height, but you can make it responsive too */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; /* Make sure the whole image is visible */
+    color: white;
+    line-height: 100px; /* Vertical alignment for text */
+    text-align: center; /* Horizontal alignment for text */
+    font-size: 5vw; /* Responsive font size */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px; /* Optional: if you want rounded corners */
+    overflow: hidden; /* Ensure no overflow if using border-radius */
+    text-decoration: none; /* Remove underline from links if using 'a' tags */
+    text-shadow: 
+        -0.5px -0.5px 0 #567788,  
+         0.5px -0.5px 0 #567788,
+        -0.5px  0.5px 0 #567788,
+         0.5px  0.5px 0 #567788;
 }
 
-@media (max-width: 600px) { /* Adjust breakpoint as necessary */
+/* Media query for extra small devices (phones) */
+@media only screen and (max-width: 600px) {
     .menu-button {
-        width: 95%; /* Increase width on smaller screens */
-        height: auto; /* Adjust height to maintain aspect ratio */
-        line-height: normal; /* Adjust line height for text */
-        padding: 20px 0; /* Add padding to increase button height */
-        font-size: 20px; /* Optionally adjust font size */
+        width: 95%; /* Increase width on very small screens */
+        height: 80px; /* Adjust height as needed */
+        font-size: 4vw; /* Adjust font size as needed */
+        line-height: 80px; /* Adjust line height to match height for vertical centering */
+    }
+}
+
+/* Media query for small devices (portrait tablets and large phones) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .menu-button {
+        width: 85%; /* Slightly decrease width on small tablets */
+        height: 120px; /* Adjust height as needed */
+        font-size: 4.5vw; /* Adjust font size as needed */
+        line-height: 120px; /* Adjust line height to match height for vertical centering */
+    }
+}
+
+/* Media query for medium devices (landscape tablets) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .menu-button {
+        width: 80%; /* Adjust the width as needed */
+        height: 120px; /* Maintain a larger fixed height */
+        font-size: 3vw; /* Adjust font size as needed */
+        line-height: 120px; /* Match line height with height for vertical centering */
+    }
+}
+
+/* Media query for large devices (desktops) */
+@media only screen and (min-width: 1201px) {
+    .menu-button {
+        width: 70%; /* Decrease width for larger screens to avoid too wide buttons */
+        height: 150px; /* Increase height for larger display area */
+        font-size: 2vw; /* Adjust font size as needed */
+        line-height: 150px; /* Match line height with height for vertical centering */
     }
 }
 

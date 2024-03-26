@@ -1,6 +1,6 @@
 {
   "name": "current-weather-app",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "scripts": {
     "start": "node ./node_modules/https-server/https-server.js"
   },
