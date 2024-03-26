@@ -14,7 +14,7 @@
     color: white;
     line-height: 100px; /* Vertical alignment for text */
     text-align: center; /* Horizontal alignment for text */
-    font-size: 5vw; /* Responsive font size */
+    font-size: 4vw; /* Responsive font size */
     border: none;
     cursor: pointer;
     border-radius: 10px; /* Optional: if you want rounded corners */
@@ -28,7 +28,7 @@
 }
 
 /* Media query for extra small devices (phones) */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 350px) {
     .menu-button {
         width: 95%; /* Increase width on very small screens */
         height: 80px; /* Adjust height as needed */
@@ -38,11 +38,11 @@
 }
 
 /* Media query for small devices (portrait tablets and large phones) */
-@media only screen and (min-width: 601px) and (max-width: 900px) {
+@media only screen and (min-width: 351px) and (max-width: 900px) {
     .menu-button {
-        width: 85%; /* Slightly decrease width on small tablets */
+        width: 90%; /* Slightly decrease width on small tablets */
         height: 120px; /* Adjust height as needed */
-        font-size: 4.5vw; /* Adjust font size as needed */
+        font-size: 3.5vw; /* Adjust font size as needed */
         line-height: 120px; /* Adjust line height to match height for vertical centering */
     }
 }
@@ -62,7 +62,7 @@
     .menu-button {
         width: 70%; /* Decrease width for larger screens to avoid too wide buttons */
         height: 150px; /* Increase height for larger display area */
-        font-size: 2vw; /* Adjust font size as needed */
+        font-size: 3vw; /* Adjust font size as needed */
         line-height: 150px; /* Match line height with height for vertical centering */
     }
 }
