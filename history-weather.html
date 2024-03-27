@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather History</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Weather History</h1>
+        <div>
+            <input type="text" id="latitude" placeholder="Enter latitude">
+            <input type="text" id="longitude" placeholder="Enter longitude">
+            <input type="date" id="start" placeholder="Start Date">
+            <input type="date" id="end" placeholder="End Date">
+            <button onclick="fetchWeatherHistory()">Get Weather History</button>
+        </div>
+        <p class="disclaimer">Please note: The time frame for weather history data is limited to within 1 year of the current date.</p>
+        <div id="weatherHistory">
+            <!-- Weather History Details Will Be Displayed Here -->
+        </div>
+    </div>
+    <script src="historyweatherScript.js"></script>
+    <script src="offlineLog.js"></script>
+</body>
+</html>
