@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Current Weather App</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylesWeatherForecastPage.css">
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-    <div id="app">
-        <h1>Current Weather&Forecast</h1>
-        <div>
-            <input type="text" id="latitude" placeholder="Enter latitude">
-            <input type="text" id="longitude" placeholder="Enter longitude">
-        </div>
-        <div>
-            <!-- Grouped buttons -->
+    <div class="title-container">
+        <h2>Current&Forecast Weather</h2>
+    </div>
+    <div class="input-container" id="app">
+        <input type="text" id="latitude" class="textInput" placeholder="Enter latitude">
+        <input type="text" id="longitude" class="textInput" placeholder="Enter longitude">
+        <div class="button-container">
             <button class="location-button" onclick="getLocationAndWeather()">Current Location</button>
             <button class="weather-button" onclick="fetchCurrentWeather()">Get Weather</button>
         </div>
@@ -25,7 +24,6 @@
         <div id="forecast">
             <!-- Weather Forecast -->
         </div>
-        <button onclick="location.href='index.html'">Return</button>
     </div>
     <script src="forecastweatherScript.js"></script>
     <script src="offlineLog.js"></script>

@@ -104,51 +104,35 @@ function displayWeatherForecast(data) {
     var forecastDiv = document.getElementById('forecast');
 
     if (data && data.length > 0) {
-        // Process data to get two forecasts per day
-        let forecastsByDay = {};
-        data.forEach(forecast => {
-            let day = (new Date(forecast.dt * 1000)).toLocaleDateString();
-            if (!forecastsByDay[day]) {
-                forecastsByDay[day] = [];
-            }
-            if (forecastsByDay[day].length < 2) {  // Limit to 2 forecasts per day
-                forecastsByDay[day].push(forecast);
-            }
-        });
-
-        // Generate HTML for each day
-        var forecastsHTML = Object.entries(forecastsByDay).map(([day, forecasts]) => {
+        let forecastsHTML = data.map(forecast => {
+            let date = new Date(forecast.dt * 1000).toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            let iconUrl = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+            let tempCelsius = (forecast.main.temp - 273.15).toFixed(1);
+            let pressure = forecast.main.pressure;
+            let humidity = forecast.main.humidity;
+            let windSpeed = forecast.wind.speed;
+            let windDeg = forecast.wind.deg;
+            let clouds = forecast.clouds.all;
+            // Construct forecast HTML entry
             return `
-                <div class="forecast-day">
-                    <h4>${day}</h4>
-                    ${forecasts.map(f => {
-                        let time = (new Date(f.dt * 1000)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        let iconUrl = `http://openweathermap.org/img/wn/${f.weather[0].icon}.png`;
-                        let weather = f.weather[0];
-                        let main = f.main;
-                        let wind = f.wind;
-                        let clouds = f.clouds.all;
-                        // Convert temperatures from Kelvin to Celsius
-                        var tempCelsius = (main.temp - 273.15).toFixed(1); // Round to one decimal place
-                        var feelsLikeCelsius = (main.feels_like - 273.15).toFixed(1); // Round to one decimal place
-                        return `
-                            <div class="forecast-entry">
-                                <p><strong>${time}</strong></p>
-                                <img src="${iconUrl}" alt="${weather.description}" style="width:30px;height:30px;">
-                                <p><strong>${weather.main} - ${weather.description}</strong></p>
-                                <p>Temp: ${tempCelsius} °C (Feels like: ${feelsLikeCelsius} °C)</p>
-                                <p>Pressure: ${main.pressure} hPa</p>
-                                <p>Humidity: ${main.humidity}%</p>
-                                <p>Wind: ${wind.speed} m/s, ${wind.deg}°</p>
-                                <p>Cloudiness: ${clouds}%</p>
-                            </div>
-                        `;
-                    }).join('')}
+                <div class="forecast-entry">
+                    <h3>${date}</h3> <!-- Include the date within each forecast entry -->
+                    <img src="${iconUrl}" alt="${forecast.weather[0].description}" style="width:50px;height:50px;">
+                    <p><strong>${forecast.weather[0].main} - ${forecast.weather[0].description}</strong></p>
+                    <p>Temperature: ${tempCelsius} °C</p>
+                    <p>Pressure: ${pressure} hPa</p>
+                    <p>Humidity: ${humidity}%</p>
+                    <p>Wind: ${windSpeed} m/s, ${windDeg}°</p>
+                    <p>Cloudiness: ${clouds}%</p>
                 </div>
             `;
         }).join('');
 
-        forecastDiv.innerHTML = `<h2>Weather Forecast</h2>${forecastsHTML}`;
+        // Wrap the forecastsHTML string with a container div for styling
+        forecastDiv.innerHTML = `
+            <div class="forecastWeatherTitle"><h2>Weather Forecast</h2></div>
+            <div class="weatherForecastDisplay">${forecastsHTML}</div>
+        `;
     } else {
         forecastDiv.innerHTML = `<p>Weather forecast data not available.</p>`;
     }

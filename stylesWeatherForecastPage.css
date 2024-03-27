@@ -1,0 +1,195 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+/* Unified title container styling */
+.title-container {
+    position: relative;
+    text-align: left;
+    width: 100vw; /* Full width */
+    height: 200px; 
+    padding-top: 20%; /* This padding-top percentage controls the height relative to the width */
+    margin-bottom: -20px;
+    background-position: top center;
+    background: url('./backgrounds/backgroundShape.png') no-repeat center center;
+    background-size: cover;
+    z-index: 1;
+    color: white;
+    font-size: 1.5rem;
+    padding-left: 10px;
+    overflow: hidden; /* This will ensure no part of the background overflows */
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* General styling for input fields */
+input[type="text"], input[type="date"] {
+    display: block; /* Ensures inputs appear on their own line */
+    width: 80%; /* Adjust width for a balanced look */
+    margin: 20px auto; /* Centers the inputs horizontally and adds vertical spacing */
+    padding: 15px; /* Provides ample space inside the inputs for text */
+    border-radius: 25px; /* Enhances the rounded corners for a modern feel */
+    border: 2px solid #ccc;
+    background-color: #f8f8f8; /* Light background for inputs */
+    color: #333; /* Keeps the text color dark for contrast */
+    font-size: 1rem; /* Ensures text size is readable */
+    
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers buttons horizontally */
+    align-items: center; /* Aligns buttons vertically for equal spacing */
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    gap: 0px; /* Provides space between buttons */
+    margin: 10px 0; /* Additional spacing above and below the container */
+    width: 100%;
+}
+
+/* General button styling */
+button {
+    padding: 15px 30px; /* Adjust padding for a more pronounced button */
+    font-size: 1rem; /* Ensures font size is consistent */
+    color: white; /* Text color */
+    border-radius: 25px;
+    background-color: #567788; /* Primary button color */
+    color: white;
+    cursor: pointer;
+    outline: none;
+    margin: 0 10px;
+    width: auto;
+}
+
+button:hover {
+    background-color: #567788; /* Darker shade on hover */
+}
+
+/* Weather and forecast display styling */
+.current-weather-entry {
+    background-color: #567788; /* Consistent theme color */
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%; /* Responsive width */
+    text-align: center; /* Centers content */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+}
+
+.current-weather-entry img {
+    width: 60px; /* Adjusted for visibility */
+    height: 60px; /* Maintains aspect ratio */
+    margin: 10px 0; /* Spacing around image */
+}
+
+/* Container for all forecast entries */
+.weatherForecastDisplay {
+    background-color: #567788; /* Matches the theme color */
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 80%; /* Matches the individual entry width for consistency */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adds depth */
+    overflow: auto; /* Ensures no overflow */
+    display: flex; /* Utilizes flexbox for layout */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: center; /* Centers content vertically within the container */
+    align-items: center;
+}
+
+.forecastWeatherTitle  {
+    text-align: center;
+    width: 100%;
+    color: black;
+    margin: 0 0 20px 0;
+}
+
+/* Individual forecast entries within the container */
+.forecast-entry {
+    background-color: #567788; /* Light background for contrast */
+    color: white; /* Dark text for readability */
+    border-radius: 5px;
+    margin: 10px 0; /* Adjusted margin for spacing */
+    padding: 15px; /* Space between entries */
+    text-align: center;
+    width: calc(100% - 20px); /* Ensure entries fit well within the container */
+    box-sizing: border-box; /* Includes padding in width calculation */
+    display: flex; /* Utilizes flexbox for layout */
+    flex-direction: column; /* Stacks children vertically */
+    justify-content: center; /* Centers content vertically within the container */
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.forecast-entry img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px; /* Adds space below the image */
+}
+
+/* Media query for extra small devices (phones) */
+@media only screen and (max-width: 350px) {
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+
+    .textInput, .dateSelection {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    input[type="text"], input[type="date"], button {
+        width: calc(80% - 20px); /* Full width with slight padding on small screens */
+        margin: 10px 10px; /* Adjusted margin for smaller screens */
+        padding: 15px; /* Larger padding for easier interaction */
+    }
+
+    .current-weather-entry, .forecast-entry {
+        width: 90%; /* Allows for more space on smaller screens */
+    }
+}
+
+/* Media query for small devices (portrait tablets and large phones) */
+@media only screen and (min-width: 351px) and (max-width: 900px) {
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+
+    .title-container {
+        height: 250px; /* Slightly larger height for larger devices */
+    }
+
+    input[type="text"], input[type="date"], button {
+        width: calc(80% - 20px); /* Full width with slight padding on small screens */
+        margin: 10px 10px; /* Adjusted margin for smaller screens */
+        padding: 15px; /* Larger padding for easier interaction */
+    }
+
+    .current-weather-entry, .forecast-entry {
+        width: 90%; /* Allows for more space on smaller screens */
+    }
+}
+
+/* Media query for medium devices (landscape tablets) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .title-container {
+        height: 350px; /* Larger height for desktop screens */
+    }
+}
+
+/* Media query for large devices (desktops) */
+@media only screen and (min-width: 1201px) {
+    .title-container {
+        height: 400px; /* Even larger height for big screens */
+    }
+}
