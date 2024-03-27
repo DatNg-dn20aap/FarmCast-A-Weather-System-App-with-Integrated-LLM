@@ -1,0 +1,119 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Base styles */
+.title-container {
+    position: relative;
+    text-align: left;
+    width: 100vw; /* Full width */
+    height: 200px; 
+    padding-top: 20%; /* This padding-top percentage controls the height relative to the width */
+    margin-bottom: -20px;
+    background-position: top center;
+    background: url('./backgrounds/backgroundShape.png') no-repeat center center;
+    background-size: cover;
+    z-index: 1;
+    overflow: hidden; /* This will ensure no part of the background overflows */
+}
+
+h2 {
+    position: absolute;
+    padding-left: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the title is above the background shape */
+    width: 100%; /* Ensures the text can be centered in the title container */
+    margin: 0; /* Resets any default margin */
+    color: white; /* Text color */
+    font-size: 3rem; /* Adjust the size as needed */
+    font-weight: bold; /* Make the text bold */
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow for wrapping on smaller screens */
+    justify-content: center; /* Center the items horizontally */
+    gap: 10px; /* Spacing between items */
+    margin: 20px; /* Outer spacing for the container */
+}
+
+/* Styles for text inputs */
+.textInput {
+    flex-grow: 1; /* Grow to use available space */
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin: 5px; /* Margin for spacing between elements */
+    width: calc(50% - 10px); /* Adjust width, taking into account the margins */
+}
+
+/* Styles for date selection inputs */
+.dateSelection {
+    flex-grow: 1;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin: 5px;
+    width: calc(50% - 10px);
+}
+
+
+.weather-button {
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    background-color: #567788;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+    margin: 5px;
+    width: 100%; /* Full width for the button */
+}
+
+.weatherDataOutput {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px;
+    background-color: #567788;
+    color: white;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Media query for extra small devices (phones) */
+@media only screen and (max-width: 350px) {
+    .textInput, .dateSelection {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+/* Media query for small devices (portrait tablets and large phones) */
+@media only screen and (min-width: 351px) and (max-width: 900px) {
+    .title-container {
+        height: 250px; /* Slightly larger height for larger devices */
+    }
+}
+
+/* Media query for medium devices (landscape tablets) */
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+    .title-container {
+        height: 350px; /* Larger height for desktop screens */
+    }
+}
+
+/* Media query for large devices (desktops) */
+@media only screen and (min-width: 1201px) {
+    .title-container {
+        height: 400px; /* Even larger height for big screens */
+    }
+}

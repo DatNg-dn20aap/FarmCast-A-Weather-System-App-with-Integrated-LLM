@@ -35,6 +35,10 @@ function displayWeatherHistory(data) {
     const historyDiv = document.getElementById('weatherHistory');
     if (data && data.length > 0) {
         const historyHTML = data.map(entry => {
+            // Convert UNIX timestamp to a readable date format
+            const date = new Date(entry.dt * 1000);
+            const formattedDate = date.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
             const weather = entry.weather[0];
             const main = entry.main;
             const wind = entry.wind;
@@ -43,6 +47,7 @@ function displayWeatherHistory(data) {
 
             return `
                 <div class="history-entry">
+                    <h3>${formattedDate}</h3> <!-- Display the formatted date -->
                     <img src="${iconUrl}" alt="${weather.description}" style="width:50px;height:50px;">
                     <p><strong>${weather.main} - ${weather.description}</strong></p>
                     <p>Temperature: ${tempCelsius} °C</p>

@@ -3,20 +3,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather History</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styleHistoryWeatherPage.css">
 </head>
 <body>
-    <div id="app">
-        <h1>Weather History</h1>
-        <div>
-            <input type="text" id="latitude" placeholder="Enter latitude">
-            <input type="text" id="longitude" placeholder="Enter longitude">
-            <input type="date" id="start" placeholder="Start Date">
-            <input type="date" id="end" placeholder="End Date">
-            <button onclick="fetchWeatherHistory()">Get Weather History</button>
-        </div>
+    <div class="title-container">
+        <h2>Weather History</h2>
+    </div>
+    <div class="input-container">
+        <input type="text" id="latitude" class="textInput" placeholder="Enter latitude">
+        <input type="text" id="longitude" class="textInput" placeholder="Enter longitude">
+        <input type="date" id="start" class="dateSelection" placeholder="Start Date">
+        <input type="date" id="end" class="dateSelection" placeholder="End Date">
+        <button class="weather-button" onclick="fetchWeatherHistory()">Get Weather History</button>
         <p class="disclaimer">Please note: The time frame for weather history data is limited to within 1 year of the current date.</p>
-        <div id="weatherHistory">
+        <div class="weatherDataOutput" id="weatherHistory">
             <!-- Weather History Details Will Be Displayed Here -->
         </div>
     </div>
